@@ -37,6 +37,15 @@ namespace UsersService
 					);
 					db.SaveChanges();
 				}
+
+				if (!db.Orders.Any())
+				{
+					db.Orders.AddRange(
+						new Order { Id = 3, UserId = 1, Date = DateTime.Now.AddMonths(-1), Total = 120.5 },
+						new Order { Id = 4, UserId = 2, Date = DateTime.Now.AddDays(-1), Total = 85.11 }
+					);
+					db.SaveChanges();
+				}
 			}
 		}
 	}
