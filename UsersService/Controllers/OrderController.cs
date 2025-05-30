@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UsersService.Models;
-using UsersService.Service;
+using UsersService.Service.Orders;
 
 namespace UsersService.Controllers
 {
@@ -8,9 +8,9 @@ namespace UsersService.Controllers
 	[Route("api/[controller]")]
 	public class OrderController : ControllerBase
 	{
-		private readonly IOrderService _orderService;
+		private readonly IUserOrdersService _orderService;
 
-		public OrderController(IOrderService orderService)
+		public OrderController(IUserOrdersService orderService)
 		{
 			_orderService = orderService;
 		}
@@ -33,12 +33,6 @@ namespace UsersService.Controllers
 		public async Task<IEnumerable<Order>> GetOrdersByDate(DateTime date)
 		{
 			var order = await _orderService.GetOrdersByDateAsync(date);
-			return order;
-		}
-		[HttpGet("by-user-id/{userId}")]
-		public async Task<IEnumerable<Order>> GetOrdersByUserId(int userId)
-		{
-			var order = await _orderService.GetOrdersByUserIdAsync(userId);
 			return order;
 		}
 	}

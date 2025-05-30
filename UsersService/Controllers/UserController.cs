@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UsersService.Models;
-using UsersService.Service;
+using UsersService.Service.Users;
 
 namespace UsersService.Controllers
 {

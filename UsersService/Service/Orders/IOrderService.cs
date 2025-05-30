@@ -1,12 +1,11 @@
 ﻿using UsersService.Models;
 
-namespace UsersService.Service
+namespace UsersService.Service.Orders
 {
-	public interface IOrderService
+	public interface IOrdersService
 	{
 		Task<IEnumerable<Order>> GetAllOrdersAsync();
 		Task<Order?> GetOrderByIdAsync(int id);
 		Task<IEnumerable<Order>> GetOrdersByDateAsync(DateTime date);
-		Task<IEnumerable<Order>> GetOrdersByUserIdAsync(int userId);
 	}
 }

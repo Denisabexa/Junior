@@ -1,8 +1,10 @@
 ﻿using UsersService.DBContext;
 using UsersService.Models;
-using UsersService.Repository;
-using UsersService.Service;
 using Microsoft.EntityFrameworkCore;
+using UsersService.Service.Orders;
+using UsersService.Service.Users;
+using UsersService.Repository.Orders;
+using UsersService.Repository.Users;
 
 namespace UsersService
 {
@@ -10,7 +12,7 @@ namespace UsersService
 	{
 		public static void AddServices(IServiceCollection services)
 		{
-			services.AddScoped<IOrderService, OrderService>();
+			services.AddScoped<IUserOrdersService, OrderService>();
 			services.AddScoped<IOrderRepository, OrderRepository>();
 
 			services.AddScoped<IUserService, UserService>();

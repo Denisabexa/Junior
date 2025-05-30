@@ -1,7 +1,7 @@
 ﻿using UsersService.Models;
-using UsersService.Repository;
+using UsersService.Repository.Users;
 
-namespace UsersService.Service
+namespace UsersService.Service.Users
 {
 	public class UserService : IUserService
 	{
@@ -17,7 +17,7 @@ namespace UsersService.Service
 			var users = await _userRepository.GetAll();
 			return users;
 		}
-		public async Task<User> GetById(int id)
+		public async Task<User?> GetById(int id)
 		{
 			var users = await _userRepository.GetByIdAsync(id);
 			return users;

@@ -2,7 +2,7 @@
 using UsersService.DBContext;
 using UsersService.Models;
 
-namespace UsersService.Repository
+namespace UsersService.Repository.Orders
 {
 	public class OrderRepository : IOrderRepository
 	{

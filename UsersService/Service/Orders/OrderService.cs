@@ -1,9 +1,9 @@
 ﻿using UsersService.Models;
-using UsersService.Repository;
+using UsersService.Repository.Orders;
 
-namespace UsersService.Service
+namespace UsersService.Service.Orders
 {
-	public class OrderService : IOrderService
+	public class OrderService : IUserOrdersService
 	{
 		private readonly IOrderRepository _orderRepository;
 
@@ -28,11 +28,5 @@ namespace UsersService.Service
 			var order = await _orderRepository.GetOrdersByDateAsync(date);
 			return order;
 		}
-		public async Task<IEnumerable<Order>> GetOrdersByUserIdAsync(int userId)
-		{
-			var order = await _orderRepository.GetOrdersByUserIdAsync(userId);
-			return order;
-		}
-
 	}
 }

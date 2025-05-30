@@ -2,9 +2,6 @@ namespace UsersService
 {
     public class Program
     {
-
-		//TODO
-		//3. implementeaza GetOrdersByUserId
 		public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -44,9 +41,6 @@ namespace UsersService
 			app.MapControllers();
 
             app.Run();
-
-
 		}
-
 	}
 }

@@ -2,7 +2,7 @@
 using UsersService.DBContext;
 using UsersService.Models;
 
-namespace UsersService.Repository
+namespace UsersService.Repository.Users
 {
 	public class UserRepository : IUserRepository
 	{
@@ -17,23 +17,25 @@ namespace UsersService.Repository
 			var users = await _context.Users.ToListAsync();
 			return users;
 		}
-		public async Task<User> GetByIdAsync(int id)
+		public async Task<User?> GetByIdAsync(int id)
 		{
-			var user = await _context.Users.FirstOrDefaultAsync(u=>u.Id == id);
+			var user = await _context.Users
+				.AsNoTracking()
+				.FirstOrDefaultAsync(u=>u.Id == id);
 			return user;
 		}
 		public async Task<User?> GetByEmailAsync(string email)
 		{
-			return await _context.Users
+			var user = await _context.Users
 				.AsNoTracking()
 				.FirstOrDefaultAsync(u => u.Email == email);
+			return user;
 		}
 		public async Task<User?> GetByUsernameAndPasswordAsync(string username, string password)
 		{
 			var user = await _context.Users
-			.AsNoTracking()
-			.FirstOrDefaultAsync(u => u.Username == username && u.Password == password);
-
+				.AsNoTracking()
+				.FirstOrDefaultAsync(u => u.Username == username && u.Password == password);
 			return user;
 		}
 	}
