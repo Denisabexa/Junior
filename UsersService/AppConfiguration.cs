@@ -2,6 +2,7 @@
 using UsersService.Models;
 using UsersService.Repository;
 using UsersService.Service;
+using Microsoft.EntityFrameworkCore;
 
 namespace UsersService
 {
@@ -14,9 +15,14 @@ namespace UsersService
 
 			services.AddScoped<IUserService, UserService>();
 			services.AddScoped<IUserRepository, UserRepository>();
-
-
 		}
+		public static void AddDBContext(IServiceCollection services)
+		{
+			services.AddDbContext<UsersDbContext>(options =>
+				options.UseInMemoryDatabase("UsersDb")
+			);
+		}
+
 		public static void SeedDB(IServiceProvider services)
 		{
 			using (var scope = services.CreateScope())

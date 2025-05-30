@@ -1,15 +1,9 @@
-
-using Microsoft.EntityFrameworkCore;
-using UsersService.DBContext;
-using UsersService.Models;
-
 namespace UsersService
 {
     public class Program
     {
 
 		//TODO
-		//1. AddContext in app configuration
 		//2. fac seed la db si cu 2 order
 		//3. implementeaza GetOrdersByUserId
 		public static void Main(string[] args)
@@ -18,8 +12,7 @@ namespace UsersService
 
 			// Add services to the container.
 
-			builder.Services.AddDbContext<UsersDbContext>(options =>
-	        options.UseInMemoryDatabase("UsersDb"));
+			AppConfiguration.AddDBContext(builder.Services);
 
 			AppConfiguration.AddServices(builder.Services);
 
