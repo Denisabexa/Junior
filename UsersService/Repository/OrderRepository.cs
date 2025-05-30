@@ -1,9 +1,6 @@
-﻿using UsersService.DBContext;
+﻿using Microsoft.EntityFrameworkCore;
+using UsersService.DBContext;
 using UsersService.Models;
-using UsersService.Repository;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace UsersService.Repository
 {
@@ -16,13 +13,13 @@ namespace UsersService.Repository
 			_context = context;
 		}
 
-		public async Task<IEnumerable<Order>> GetAllOrders()
+		public async Task<IEnumerable<Order>> GetAllOrdersAsync()
 		{
 			var orders = await _context.Orders.ToListAsync();
 			return orders;
 		}
 
-		public async Task<Order> GetOrderByIdAsync(int id)
+		public async Task<Order?> GetOrderByIdAsync(int id)
 		{
 			var order = await _context.Orders.FindAsync(id);
 			return order;
@@ -33,11 +30,11 @@ namespace UsersService.Repository
 				.Where(o => o.Date.Date == date.Date)
 				.ToListAsync();
 		}
-		//public async Task<IEnumerable<Order>> GetOrdersByTotalAsync(double total)
-		//{
-		//	return await _context.Orders
-		//		.Where(o => o.Total == total)
-		//		.ToListAsync();
-		//}
+		public async Task<IEnumerable<Order>> GetOrdersByUserIdAsync(int userId)
+		{
+			return await _context.Orders
+				.Where(o => o.UserId == userId)
+				.ToListAsync();
+		}
 	}
 }

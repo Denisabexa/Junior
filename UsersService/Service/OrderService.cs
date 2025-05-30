@@ -1,8 +1,5 @@
 ﻿using UsersService.Models;
 using UsersService.Repository;
-using UsersService.Service;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace UsersService.Service
 {
@@ -15,27 +12,27 @@ namespace UsersService.Service
 			_orderRepository = orderRepository;
 		}
 
-		public async Task<IEnumerable<Order>> GetAllOrders()
+		public async Task<IEnumerable<Order>> GetAllOrdersAsync()
 		{
-			var order = await _orderRepository.GetAllOrders();
+			var order = await _orderRepository.GetAllOrdersAsync();
 			return order;
 		}
-		public async Task<Order> GetOrderById(int id)
+		public async Task<Order?> GetOrderByIdAsync(int id)
 		{
 			var order = await _orderRepository.GetOrderByIdAsync(id);
-			return order;	
+			return order;
 		}
 
-		public async Task<IEnumerable<Order>> GetOrdersByDate(DateTime date)
+		public async Task<IEnumerable<Order>> GetOrdersByDateAsync(DateTime date)
 		{
 			var order = await _orderRepository.GetOrdersByDateAsync(date);
-			return order;	
+			return order;
 		}
-		//public async Task<IEnumerable<Order>> GetOrdersByTotal(double total)
-		//{
-		//	var order = await _orderRepository.GetOrdersByTotalAsync(total);
-		//	return order;
-		//}
+		public async Task<IEnumerable<Order>> GetOrdersByUserIdAsync(int userId)
+		{
+			var order = await _orderRepository.GetOrdersByUserIdAsync(userId);
+			return order;
+		}
 
 	}
 }

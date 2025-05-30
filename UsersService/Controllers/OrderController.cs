@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using UsersService.Models;
 using UsersService.Service;
+
 namespace UsersService.Controllers
 {
 	[ApiController]
@@ -20,27 +18,27 @@ namespace UsersService.Controllers
 		[HttpGet]
 		public async Task<IEnumerable<Order>> GetAll()
 		{
-			var order= await _orderService.GetAllOrders();
+			var order= await _orderService.GetAllOrdersAsync();
 			return order;
 		}
 
 		[HttpGet("{id}")]
-		public async Task<Order> GetById(int id)
+		public async Task<Order?> GetById(int id)
 		{
-			var order = await _orderService.GetOrderById(id);
+			var order = await _orderService.GetOrderByIdAsync(id);
 			return order;
 		}
 
 		[HttpGet("by-date/{date}")]
 		public async Task<IEnumerable<Order>> GetOrdersByDate(DateTime date)
 		{
-			var order = await _orderService.GetOrdersByDate(date);
+			var order = await _orderService.GetOrdersByDateAsync(date);
 			return order;
 		}
-		[HttpGet("by-date/{date}")]
-		public async Task<IEnumerable<Order>> GetOrdersByUserId(DateTime date)
+		[HttpGet("by-user-id/{userId}")]
+		public async Task<IEnumerable<Order>> GetOrdersByUserId(int userId)
 		{
-			var order = await _orderService.GetOrdersByDate(date);
+			var order = await _orderService.GetOrdersByUserIdAsync(userId);
 			return order;
 		}
 	}

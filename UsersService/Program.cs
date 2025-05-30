@@ -4,7 +4,6 @@ namespace UsersService
     {
 
 		//TODO
-		//2. fac seed la db si cu 2 order
 		//3. implementeaza GetOrdersByUserId
 		public static void Main(string[] args)
         {

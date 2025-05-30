@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using UsersService.DBContext;
 using UsersService.Models;
 
