@@ -3,7 +3,7 @@ using UsersService.Repository.Orders;
 
 namespace UsersService.Service.Orders
 {
-	public class OrderService : IUserOrdersService
+	public class OrderService : IOrdersService
 	{
 		private readonly IOrderRepository _orderRepository;
 

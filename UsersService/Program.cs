@@ -20,7 +20,6 @@ namespace UsersService
 			// Add controllers
 			builder.Services.AddControllers();
 
-
 			var app = builder.Build();
 
 			// Seed DB
@@ -36,7 +35,6 @@ namespace UsersService
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
 			app.MapControllers();
 
