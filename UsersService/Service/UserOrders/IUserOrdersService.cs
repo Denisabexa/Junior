@@ -1,6 +1,6 @@
 ﻿using UsersService.Models;
 
-namespace UsersService.Service.Orders
+namespace UsersService.Service.UserOrders
 {
 	public interface IUserOrdersService
 	{

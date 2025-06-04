@@ -23,7 +23,7 @@ namespace UsersService.Controllers
 		}
 
 		[HttpGet("{id}")]
-		public async Task<User> GetById(int id)
+		public async Task<User?> GetById(int id)
 		{
 			var user = await _userService.GetById(id);
 			return user;

@@ -2,7 +2,7 @@
 using UsersService.Repository.Orders;
 using UsersService.Repository.Users;
 
-namespace UsersService.Service.Orders
+namespace UsersService.Service.UserOrders
 {
 	public class UserOrdersService : IUserOrdersService
 	{

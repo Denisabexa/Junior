@@ -22,14 +22,14 @@ namespace UsersService
 
 			var app = builder.Build();
 
-			// Seed DB
-			AppConfiguration.SeedDB(app.Services);
-
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
 				app.UseSwagger();
 				app.UseSwaggerUI();
+
+				// Seed DB
+				AppConfiguration.SeedDB(app.Services);
 			}
 
             app.UseHttpsRedirection();

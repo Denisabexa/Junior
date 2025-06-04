@@ -5,6 +5,10 @@ using UsersService.Service.Orders;
 using UsersService.Service.Users;
 using UsersService.Repository.Orders;
 using UsersService.Repository.Users;
+using UsersService.Service.UserOrders;
+using UsersService.Service.Products;
+using UsersService.Repository.Products;
+using UsersService.Service.Products;
 
 namespace UsersService
 {
@@ -12,11 +16,17 @@ namespace UsersService
 	{
 		public static void AddServices(IServiceCollection services)
 		{
-			services.AddScoped<IUserOrdersService, OrderService>();
+			services.AddScoped<IOrdersService, OrderService>();
 			services.AddScoped<IOrderRepository, OrderRepository>();
 
 			services.AddScoped<IUserService, UserService>();
 			services.AddScoped<IUserRepository, UserRepository>();
+
+			services.AddScoped<IUserOrdersService, UserOrdersService>();
+
+			services.AddScoped<IProductService, ProductService>();
+			services.AddScoped<IProductRepository, ProductRepository>();
+
 		}
 		public static void AddDBContext(IServiceCollection services)
 		{
@@ -45,6 +55,14 @@ namespace UsersService
 					db.Orders.AddRange(
 						new Order { Id = 3, UserId = 1, Date = DateTime.Now.AddMonths(-1), Total = 120.5 },
 						new Order { Id = 4, UserId = 2, Date = DateTime.Now.AddDays(-1), Total = 85.11 }
+					);
+					db.SaveChanges();
+				}
+				if (!db.Products.Any())
+				{
+					db.Products.AddRange(
+						new Product { Id = 5,  },
+						new Product { Id = 6,  }
 					);
 					db.SaveChanges();
 				}

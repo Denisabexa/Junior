@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UsersService.Models;
-using UsersService.Service.Orders;
+using UsersService.Service.UserOrders;
 
 namespace UsersService.Controllers
 {
